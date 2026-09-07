@@ -1,5 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-import { Environment, Float, useGLTF, useProgress, Html } from "@react-three/drei";
+import { Environment, Float, Lightformer, useGLTF, useProgress, Html } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import pterosaurAsset from "@/assets/pterosaur.gltf.asset.json";
@@ -88,8 +88,8 @@ export function PterosaurScene({ progressRef }: PterosaurSceneProps) {
       <pointLight position={[-4, 1, 3]} intensity={2.2} color="#5caa9c" />
       <Environment resolution={256}>
         <color attach="background" args={["#071513"]} />
-        <Environment.Lightformer intensity={2} position={[3, 5, 2]} scale={[5, 5, 1]} color="#f2c77c" />
-        <Environment.Lightformer intensity={1.5} position={[-4, 1, -2]} scale={[4, 4, 1]} color="#4b8f83" />
+        <Lightformer intensity={2} position={[3, 5, 2]} scale={[5, 5, 1]} color="#f2c77c" />
+        <Lightformer intensity={1.5} position={[-4, 1, -2]} scale={[4, 4, 1]} color="#4b8f83" />
       </Environment>
       <Float speed={0.65} rotationIntensity={0.06} floatIntensity={0.18}>
         <Suspense fallback={<Loader />}>

@@ -1,4 +1,4 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { Environment, Float, Lightformer, useGLTF, useProgress, Html } from "@react-three/drei";
 import { Suspense, useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
@@ -24,12 +24,13 @@ function Loader() {
 
 function Pterosaur({ progressRef }: PterosaurSceneProps) {
   const groupRef = useRef<THREE.Group>(null);
+  const { viewport } = useThree();
   const { scene } = useGLTF(MODEL_URL);
   const model = useMemo(() => {
     const clone = scene.clone(true);
     const bounds = new THREE.Box3().setFromObject(clone);
     const size = bounds.getSize(new THREE.Vector3());
-    const targetSize = 4.25;
+    const targetSize = Math.min(2.8, viewport.width * 0.5);
     clone.scale.setScalar(targetSize / Math.max(size.y, size.x, size.z, 1));
     const scaledBounds = new THREE.Box3().setFromObject(clone);
     const center = scaledBounds.getCenter(new THREE.Vector3());
@@ -60,7 +61,12 @@ function Pterosaur({ progressRef }: PterosaurSceneProps) {
     group.rotation.x = THREE.MathUtils.lerp(group.rotation.x, targetX, easing);
     group.rotation.y = THREE.MathUtils.lerp(group.rotation.y, targetY, easing);
     group.rotation.z = THREE.MathUtils.lerp(group.rotation.z, targetZ, easing);
-    group.position.x = THREE.MathUtils.lerp(group.position.x, Math.sin(progress * Math.PI) * 0.18, easing);
+    const isDesktop = viewport.width > 5;
+    const finalChapterProgress = Math.max(0, (progress - 0.84) / 0.16);
+    const targetPositionX = isDesktop
+      ? 1.15 - finalChapterProgress * 2.25
+      : 0.25 - finalChapterProgress * 0.5;
+    group.position.x = THREE.MathUtils.lerp(group.position.x, targetPositionX, easing);
     group.position.y = THREE.MathUtils.lerp(group.position.y, Math.sin(time * 0.9) * 0.09, easing);
   });
 

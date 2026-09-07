@@ -1,0 +1,3 @@
+- [ ] Build cinematic prehistoric scroll story with persistent uploaded glTF pterosaur
+- [ ] Add scroll-driven flight, tilt, and chapter choreography
+- [ ] Validate the model renders and the preview is clean on desktop and mobile

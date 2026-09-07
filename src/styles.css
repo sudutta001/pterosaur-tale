@@ -4,141 +4,105 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
-}
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.17 0.03 163);
+  --foreground: oklch(0.9 0.04 92);
+  --card: oklch(0.2 0.035 163);
+  --card-foreground: oklch(0.9 0.04 92);
+  --border: oklch(0.9 0.04 92 / 16%);
+  --primary: oklch(0.74 0.12 78);
+  --primary-foreground: oklch(0.17 0.03 163);
+  --muted-foreground: oklch(0.75 0.035 158);
+  --forest: #071513;
+  --forest-soft: #0c211c;
+  --leaf: #5caa9c;
+  --bone: #f2d59b;
+  --mist: #b9d3c4;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "DM Sans", ui-sans-serif, sans-serif;
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
+  * { border-color: var(--border); }
+  html { scroll-behavior: smooth; background: var(--forest); }
+  body { margin: 0; background: var(--forest); color: var(--mist); font-family: var(--font-sans); }
+  ::selection { background: color-mix(in oklab, var(--bone) 35%, transparent); color: var(--bone); }
+}
 
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+.prehistoric-page { --story-progress: 0; position: relative; min-height: 500vh; overflow: hidden; background: var(--forest); }
+.scene-shell { position: fixed; inset: 0; z-index: 2; pointer-events: none; }
+.scene-shell canvas { display: block; width: 100% !important; height: 100% !important; }
+.atmosphere { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; background: radial-gradient(ellipse at 50% 42%, transparent 0 24%, color-mix(in oklab, var(--forest) 32%, transparent) 62%, var(--forest) 100%); }
+.sun-disc { position: absolute; left: 50%; top: 42%; width: min(54vw, 42rem); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 999px; background: radial-gradient(circle, color-mix(in oklab, var(--bone) 22%, transparent) 0%, color-mix(in oklab, var(--bone) 8%, transparent) 35%, transparent 68%); filter: blur(2px); opacity: calc(0.85 - var(--story-progress) * 0.42); }
+.mountain { position: absolute; bottom: -4vh; left: -6vw; width: 112vw; height: 31vh; opacity: 0.55; clip-path: polygon(0 100%, 0 68%, 9% 52%, 17% 67%, 29% 25%, 39% 64%, 51% 42%, 59% 70%, 72% 32%, 84% 65%, 93% 47%, 100% 68%, 100% 100%); }
+.mountain-back { background: color-mix(in oklab, var(--leaf) 17%, var(--forest)); transform: translateY(calc(var(--story-progress) * 4vh)); }
+.mountain-front { background: color-mix(in oklab, var(--forest) 82%, black); opacity: 0.8; transform: translateY(calc(var(--story-progress) * 9vh)); }
+.cloud { position: absolute; width: 24rem; height: 6rem; border-radius: 50%; background: color-mix(in oklab, var(--mist) 6%, transparent); filter: blur(24px); opacity: 0.5; }
+.cloud-one { top: 24%; left: -10rem; transform: translateX(calc(var(--story-progress) * 18vw)); }
+.cloud-two { top: 32%; right: -12rem; transform: translateX(calc(var(--story-progress) * -22vw)); opacity: 0.32; }
+.site-header { position: fixed; top: 0; right: 0; left: 0; z-index: 10; display: flex; justify-content: space-between; padding: 1.6rem clamp(1.25rem, 4vw, 4rem); font-size: 0.62rem; letter-spacing: 0.28em; color: color-mix(in oklab, var(--mist) 65%, transparent); }
+.wordmark { color: var(--bone); }
+.header-date { text-align: right; }
+.scroll-line { position: fixed; top: 0; right: 1.25rem; z-index: 10; width: 1px; height: 100vh; background: color-mix(in oklab, var(--mist) 16%, transparent); }
+.scroll-line span { display: block; width: 1px; height: calc(var(--story-progress) * 100%); background: var(--bone); transform-origin: top; }
+.chapter-screen { position: relative; z-index: 4; display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 6rem 1.5rem; }
+.opening { align-items: flex-start; justify-content: center; padding-top: 18vh; }
+.opening-copy { width: min(100%, 34rem); margin-right: min(44vw, 34rem); }
+.eyebrow { margin: 0 0 1rem; color: var(--bone); font-size: 0.62rem; letter-spacing: 0.28em; line-height: 1.5; text-transform: uppercase; }
+h1, h2 { margin: 0; color: var(--mist); font-family: var(--font-display); font-weight: 400; letter-spacing: 0; }
+h1 { font-size: clamp(4.5rem, 10vw, 9rem); line-height: 0.79; }
+h1 em, h2 em { color: var(--bone); font-style: italic; }
+.lede { max-width: 25rem; margin: 2rem 0 0; color: color-mix(in oklab, var(--mist) 72%, transparent); font-size: 0.95rem; line-height: 1.75; }
+.scroll-prompt { display: flex; align-items: center; gap: 0.75rem; margin-top: 5rem; color: color-mix(in oklab, var(--mist) 56%, transparent); font-size: 0.63rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.prompt-line { display: inline-block; width: 2.5rem; height: 1px; background: var(--bone); }
+.story-section { justify-content: flex-start; padding-left: max(1.5rem, calc(50vw - 36rem)); }
+.chapter-copy { width: min(100%, 23rem); margin-top: 8vh; }
+.chapter-number { display: block; margin-bottom: 3.5rem; color: color-mix(in oklab, var(--bone) 70%, transparent); font-family: var(--font-display); font-size: 3rem; line-height: 0.8; }
+.chapter-copy h2 { margin-bottom: 1.4rem; font-size: clamp(2.6rem, 5vw, 4.3rem); line-height: 0.9; }
+.chapter-copy > p:last-child, .closing-copy > p:last-of-type { color: color-mix(in oklab, var(--mist) 72%, transparent); font-size: 0.92rem; line-height: 1.85; }
+.closing { min-height: 120vh; align-items: flex-end; justify-content: center; padding-bottom: 13vh; }
+.closing-copy { width: min(100%, 32rem); margin-left: min(42vw, 30rem); }
+.closing-copy h2 { font-size: clamp(3.4rem, 7vw, 6.7rem); line-height: 0.85; }
+.closing-copy > p:last-of-type { max-width: 20rem; margin-top: 2rem; }
+.closing-rule { display: block; width: 4rem; height: 1px; margin-top: 3rem; background: var(--bone); }
+.closing-copy small { display: block; margin-top: 1rem; color: color-mix(in oklab, var(--mist) 48%, transparent); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; }
+.model-loader { display: flex; flex-direction: column; align-items: center; gap: 0.45rem; color: var(--bone); font-family: var(--font-sans); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; }
+.model-loader span:first-child { font-family: var(--font-display); font-size: 2rem; letter-spacing: 0; }
+
+@media (max-width: 700px) {
+  .site-header { padding: 1.2rem 1rem; font-size: 0.52rem; }
+  .header-date { max-width: 7rem; line-height: 1.4; }
+  .scroll-line { right: 0.75rem; }
+  .opening { align-items: flex-start; padding-top: 22vh; }
+  .opening-copy { margin-right: 0; }
+  h1 { font-size: clamp(4.5rem, 21vw, 7rem); }
+  .lede { max-width: 18rem; font-size: 0.84rem; }
+  .scroll-prompt { margin-top: 3rem; }
+  .story-section { align-items: flex-end; padding: 6rem 2.5rem 9rem 1.5rem; }
+  .chapter-copy { margin-top: 0; }
+  .chapter-number { margin-bottom: 2rem; }
+  .chapter-copy h2 { font-size: 3.25rem; }
+  .closing { align-items: flex-start; padding: 6rem 2.5rem 10rem 1.5rem; }
+  .closing-copy { margin-left: 0; }
+  .closing-copy h2 { font-size: 4.6rem; }
+  .sun-disc { width: 130vw; top: 46%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .cloud, .mountain, .sun-disc { transform: none; }
 }
